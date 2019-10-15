@@ -1,5 +1,12 @@
 const path = require('path');
 
+var entries = {
+  main: ['./resources/entries/index.jsx'],
+  // vendors: ['backbone', 'jquery', 'underscore', ],
+  // vendors_login: ['jquery', ],
+};
+
+
 var outputDevelopment = {
   path: path.resolve(__dirname, 'public/dist'),
   filename: '[name].js',
@@ -42,7 +49,7 @@ var devServer = {
 };
 
 var config = {
-  // entry: entries,
+  entry: entries,
   // plugins: plugins,
   // optimization: optimization,
   module: {
