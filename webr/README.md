@@ -27,3 +27,5 @@ Solucionar problema nodemon ENOSPC
 Fuentes:
 
 + https://github.com/pepeul1191/webpack-aprendiendo3
++ https://www.valentinog.com/blog/babel/
++ http://file.allitebooks.com/20180830/Getting%20Started%20with%20React.pdf
