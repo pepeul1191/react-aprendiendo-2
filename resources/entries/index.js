@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
+import Demo from '../components/Demo.jsx'
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <Demo />,
   document.getElementById('root')
-);
+)

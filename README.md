@@ -22,6 +22,10 @@ Solucionar problema nodemon ENOSPC
 
     $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
+Video Tutorial:
+
+    https://www.youtube.com/watch?v=QFaFIcGhPoM&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=1
+
 ---
 
 Fuentes:

@@ -1,11 +1,10 @@
 const path = require('path');
 
 var entries = {
-  main: ['./resources/entries/index.jsx'],
+  main: ['./resources/entries/index.js'],
   // vendors: ['backbone', 'jquery', 'underscore', ],
   // vendors_login: ['jquery', ],
 };
-
 
 var outputDevelopment = {
   path: path.resolve(__dirname, 'public/dist'),
@@ -21,9 +20,10 @@ var rules =  [
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
+    include: path.resolve(__dirname, 'resources'),
     use: {
       loader: 'babel-loader'
-    }
+    },
   }
 ];
 
