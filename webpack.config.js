@@ -14,6 +14,8 @@ var plugins = [
     /*'$': 'jquery',
     'Backbone': 'backbone',
     '_': 'underscore',*/
+    'React': 'react',
+    'ReactDOM': 'react-dom',
   }),
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
