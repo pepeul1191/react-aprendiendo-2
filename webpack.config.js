@@ -1,10 +1,27 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 var entries = {
   main: ['./resources/entries/index.js'],
   // vendors: ['backbone', 'jquery', 'underscore', ],
   // vendors_login: ['jquery', ],
 };
+
+var plugins = [
+  new webpack.ProvidePlugin({
+    // import globally this libs
+    /*'$': 'jquery',
+    'Backbone': 'backbone',
+    '_': 'underscore',*/
+  }),
+  new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // both options are optional
+    filename: '[name].css',
+    chunkFilename: '[id].css'
+  }),
+];
 
 var outputDevelopment = {
   path: path.resolve(__dirname, 'public/dist'),
@@ -24,8 +41,35 @@ var rules =  [
     use: {
       loader: 'babel-loader'
     },
-  }
+  },
+  {
+    test: /\.css$/,
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          // you can specify a publicPath here
+          // by default it use publicPath in webpackOptions.output
+          publicPath: '../'
+        }
+      },
+      'css-loader'
+    ]
+  },
 ];
+
+var optimization = {
+  splitChunks: {
+    cacheGroups: {       
+      vendor: {
+        test: /node_modules/,
+        name: 'vendors',
+        chunks: 'all', 
+        enforce: true
+      }
+    }
+  }
+};
 
 var devServer = {
   host: '0.0.0.0',
@@ -50,8 +94,8 @@ var devServer = {
 
 var config = {
   entry: entries,
-  // plugins: plugins,
-  // optimization: optimization,
+  plugins: plugins,
+  optimization: optimization,
   module: {
     rules: rules,
   },
