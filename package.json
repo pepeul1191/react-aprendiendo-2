@@ -10,7 +10,17 @@
     "webpack:server": "./node_modules/.bin/webpack-dev-server --mode development --config webpack.config.js --watch",
     "bower:install": "./node_modules/.bin/bower install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "express-session": "^1.17.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "dotenv": "^8.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
@@ -22,6 +32,8 @@
     "react-dom": "^16.10.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-dev-server": "^3.8.1",
+    "nodemon": "^1.18.9",
+    "bower": "^1.8.8"
   }
 }
