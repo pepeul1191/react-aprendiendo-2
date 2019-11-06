@@ -1,4 +1,4 @@
-import Demo from '../components/Demo.jsx'
+import {Demo} from '../components/Demo.jsx'
 
 ReactDOM.render(
   <Demo />,
