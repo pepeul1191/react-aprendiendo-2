@@ -1,6 +1,19 @@
-import {Demo} from '../components/Demo.jsx'
+import { Demo } from '../components/Demo.jsx'
+import { Welcome } from '../components/Welcome.jsx'
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>titulo</h1>
+        <Demo/>
+        <Demo/>
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
-  <Demo />,
-  document.getElementById('root')
+  <App/>
+  ,document.getElementById('root')
 )
