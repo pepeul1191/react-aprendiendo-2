@@ -1,7 +1,9 @@
 class Welcome extends React.Component {
-  render(){
+  render() {
     return <h1>welcome =)</h1>
   }
 }
 
-export default Welcome
+module.exports = {
+  Welcome, 
+}
