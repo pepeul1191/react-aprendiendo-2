@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 var entries = {
-  main: ['./resources/entries/index.js'],
+  main: ['./resources/entries/index.jsx'],
   // vendors: ['backbone', 'jquery', 'underscore', ],
   // vendors_login: ['jquery', ],
 };
