@@ -11,6 +11,8 @@ class Welcome extends React.Component {
     this.setState({
       message: 'Gracias por suscribirse OE',
       count: this.state.count + 1
+    },() => {
+      console.log('valor cambiado, nuevo valor es ' + this.state.count);
     })
   }
 
