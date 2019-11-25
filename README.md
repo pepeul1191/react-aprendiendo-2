@@ -29,6 +29,7 @@ Video Tutorial:
 Estructura de Folder:
 
     https://github.com/electron-react-boilerplate/electron-react-boilerplate/tree/master/app
+    https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76
 
 ---
 
@@ -39,3 +40,4 @@ Fuentes:
 + http://file.allitebooks.com/20180830/Getting%20Started%20with%20React.pdf
 + https://es.reactjs.org/docs/react-dom.html
 + https://create-react-app.dev/docs/importing-a-component/
++ https://react-bootstrap.github.io/getting-started/introduction/

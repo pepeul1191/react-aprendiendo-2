@@ -1,12 +1,15 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Demo } from '../components/Demo.jsx'
 import { Welcome }  from '../components/Welcome.jsx'
 import { Greet }  from '../components/Greet.jsx'
 import { Bye }  from '../components/Bye.jsx'
+import { NavigationBar }  from '../components/navigation/Bar.jsx'
 
 class App extends React.Component {
   render() {
     return (
       <div>
+        <NavigationBar />
         <h1>titulo</h1>
         <Demo />
         <Demo />
