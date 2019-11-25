@@ -26,6 +26,10 @@ Video Tutorial:
 
     https://www.youtube.com/watch?v=QFaFIcGhPoM&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=1
 
+Estructura de Folder:
+
+    https://github.com/electron-react-boilerplate/electron-react-boilerplate/tree/master/app
+
 ---
 
 Fuentes:
