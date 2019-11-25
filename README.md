@@ -31,6 +31,10 @@ Estructura de Folder:
     https://github.com/electron-react-boilerplate/electron-react-boilerplate/tree/master/app
     https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76
 
+React router
+
+    https://www.youtube.com/watch?v=QUz3k2O3ZJU
+
 ---
 
 Fuentes:
@@ -41,3 +45,5 @@ Fuentes:
 + https://es.reactjs.org/docs/react-dom.html
 + https://create-react-app.dev/docs/importing-a-component/
 + https://react-bootstrap.github.io/getting-started/introduction/
++ https://reacttraining.com/react-router/web/guides/quick-start
++ https://www.youtube.com/watch?v=QUz3k2O3ZJU

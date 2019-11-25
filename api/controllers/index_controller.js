@@ -3,10 +3,13 @@ var middlewareSessionTrue = require('../middlewares/session_true');
 var router = express.Router();
 
 var homeView = function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // res.render('index', { title: 'Express' });
+  res.render('demo', { title: 'Express' });
 };
 /* GET home page. */
 router.get('/', middlewareSessionTrue, homeView);
+router.get('/about', middlewareSessionTrue, homeView);
+router.get('/contact', middlewareSessionTrue, homeView);
 router.get('/user/create', homeView);
 router.get('/user/edit/:id', homeView);
 router.get('/autocomplete', homeView);
