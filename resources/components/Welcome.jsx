@@ -20,7 +20,7 @@ class Welcome extends React.Component {
     return (
       <div>
         <h1>welcome =), {this.state.message}, {this.state.count}</h1>
-        <button onClick={() => this.changeMessage()}>Suscribirse</button>
+        <button className="btn btn-primary" onClick={() => this.changeMessage()}>Suscribirse</button>
       </div>
     )
   }

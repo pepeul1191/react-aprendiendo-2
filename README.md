@@ -35,6 +35,10 @@ React router
 
     https://www.youtube.com/watch?v=QUz3k2O3ZJU
 
+Visual Studio Code - Extensions:
+
+    https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
+
 ---
 
 Fuentes:
