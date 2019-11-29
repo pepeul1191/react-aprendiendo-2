@@ -1,4 +1,4 @@
-import ChildComp  from './ChildComp.jsx'
+import { ChildComp } from './ChildComp.jsx'
 
 class ParentComp extends React.Component {
   constructor(props){
@@ -17,9 +17,8 @@ class ParentComp extends React.Component {
   render() {
     return (
       <div>
-        {/*<Demo />*/}
         hola desde el parent
-        <ChildComp />
+        <ChildComp greetHandler={this.greetParent} />
       </div>
     )
   }

@@ -1,4 +1,4 @@
-export default ChildComp = (props) => {
+export const ChildComp = (props) => {
   console.log(props);
-  return <button>Greet Parent</button>
+  return <button className="btn btn-primary" onClick={props.greetHandler}>Greet Parent</button>
 }
