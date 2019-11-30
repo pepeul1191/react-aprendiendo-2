@@ -2,6 +2,7 @@ import { Demo } from '../components/Demo.jsx'
 import { Welcome }  from '../components/Welcome.jsx'
 import { Greet }  from '../components/Greet.jsx'
 import { Bye }  from '../components/Bye.jsx'
+import { UserGreeting }  from '../components/UserGreeting.jsx'
 import ParentComp from '../components/ParentComp.jsx'
 
 export const ContainerHome = () => 
@@ -20,5 +21,6 @@ export const ContainerHome = () =>
       <Bye name="Yacky" age="29" />
       <Bye name="Sila" age="2" />
       <ParentComp />
+      <UserGreeting />
     </div>
   </div>
