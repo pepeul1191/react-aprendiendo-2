@@ -24,4 +24,4 @@ class ParentComp extends React.Component {
   }
 }
 
-export default ParentComp;
+export default ParentComp
