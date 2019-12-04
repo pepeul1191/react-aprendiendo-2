@@ -4,6 +4,7 @@ import { Greet }  from '../components/Greet.jsx'
 import { Bye }  from '../components/Bye.jsx'
 import { UserGreeting }  from '../components/UserGreeting.jsx'
 import { NameList }  from '../components/NameList.jsx'
+import { Form }  from '../components/Form.jsx'
 import ParentComp from '../components/ParentComp.jsx'
 
 export const ContainerHome = () => 
@@ -24,5 +25,7 @@ export const ContainerHome = () =>
       <ParentComp />
       <UserGreeting />
       <NameList />
+      <hr/>
+      <Form userName="pips" />
     </div>
   </div>
