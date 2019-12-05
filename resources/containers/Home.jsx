@@ -5,6 +5,7 @@ import { Bye }  from '../components/Bye.jsx'
 import { UserGreeting }  from '../components/UserGreeting.jsx'
 import { NameList }  from '../components/NameList.jsx'
 import { Form }  from '../components/Form.jsx'
+import Stylesheet from '../components/Stylesheet.jsx'
 import ParentComp from '../components/ParentComp.jsx'
 
 export const ContainerHome = () => 
@@ -27,5 +28,7 @@ export const ContainerHome = () =>
       <NameList />
       <hr/>
       <Form userName="pips" />
+      <hr/>
+      <Stylesheet primary={true} />
     </div>
   </div>
