@@ -57,6 +57,4 @@ class UserGreeting extends React.Component {
   }
 }
 
-module.exports = {
-  UserGreeting, 
-}
+export default UserGreeting

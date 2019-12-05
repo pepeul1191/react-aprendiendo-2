@@ -1,8 +1,8 @@
 import './Stylesheet.css'
 
 const heading = {
-  'font-weight': 600,
-  'text-decoration': 'underline',
+  fontWeight: 600,
+  textDecoration: 'underline',
 }
 
 const Stylesheet = (props) => {

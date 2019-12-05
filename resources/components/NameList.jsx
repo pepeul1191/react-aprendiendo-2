@@ -1,6 +1,6 @@
 import Dog from './Dog.jsx'
 
-export const NameList = (props) => {
+const NameList = (props) => {
   const names = [
     {
       id: 1,
@@ -19,7 +19,9 @@ export const NameList = (props) => {
     },
   ]
   const nameList = names.map(dog => 
-    <li>edad: {dog.age} - nombre: {dog.name} - <Dog key={dog.id} dog={dog}/></li>
+    <li key={dog.id}>edad: {dog.age} - nombre: {dog.name} - <Dog key={dog.id} dog={dog}/></li>
   )
   return <ul>{nameList}</ul>
 }
+
+export default NameList
