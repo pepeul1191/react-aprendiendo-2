@@ -19,6 +19,8 @@
     "express": "~4.16.1",
     "express-fileupload": "^1.1.6-alpha.5",
     "express-session": "^1.17.0",
+    "sequelize": "^5.19.0",
+    "sqlite3": "^4.0.9",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "react-bootstrap": "^1.0.0-beta.16",

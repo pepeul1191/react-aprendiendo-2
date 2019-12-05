@@ -24,7 +24,7 @@ CREATE TABLE districts
     ON DELETE CASCADE
 );
 CREATE VIEW vw_locations AS
-  SELECT DI.id AS id, CONCAT(DI.name, ', ', PR.name, ', ', DE.name) AS name
+  SELECT DI.id AS id, (DI.name || PR.name || DE.name) AS name
   FROM districts DI
   JOIN provinces PR ON DI.province_id = PR.id
   JOIN departments DE ON PR.department_id = DE.id
@@ -54,7 +54,7 @@ CREATE TABLE teachers_carrers (
 CREATE VIEW vw_teachers_locations AS
   SELECT
   T.id, T.names, T.last_names,  T.img,
-  D.id AS district_id,  CONCAT(D.name, ', ', PR.name, ', ', DE.name) AS district_name,
+  D.id AS district_id,  (D.name || PR.name || DE.name) AS district_name,
   S.id AS sex_id, S.name AS sex_name
   FROM teachers T
   JOIN districts D ON D.id = T.district_id

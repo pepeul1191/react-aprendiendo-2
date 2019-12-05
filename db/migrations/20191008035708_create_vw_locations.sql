@@ -1,7 +1,7 @@
 -- migrate:up
 
 CREATE VIEW vw_locations AS
-  SELECT DI.id AS id, CONCAT(DI.name, ', ', PR.name, ', ', DE.name) AS name
+  SELECT DI.id AS id, (DI.name || PR.name || DE.name) AS name
   FROM districts DI
   JOIN provinces PR ON DI.province_id = PR.id
   JOIN departments DE ON PR.department_id = DE.id

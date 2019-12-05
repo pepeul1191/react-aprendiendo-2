@@ -3,7 +3,7 @@
 CREATE VIEW vw_teachers_locations AS
   SELECT 
   T.id, T.names, T.last_names,  T.img, 
-  D.id AS district_id,  CONCAT(D.name, ', ', PR.name, ', ', DE.name) AS district_name,
+  D.id AS district_id,  (D.name || PR.name || DE.name) AS district_name,
   S.id AS sex_id, S.name AS sex_name
   FROM teachers T 
   JOIN districts D ON D.id = T.district_id 
