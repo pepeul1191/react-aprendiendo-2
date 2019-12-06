@@ -1,14 +1,15 @@
 import './InputAutocomplete.css'
 
-export default class PluginsInputAutocomplete extends React.Component {
+export default class PluginInputAutocomplete extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       value: '',
       hints: [],
       url: props.url, 
-      hintWidth: '300px', 
+      hintsWidth: '600px', 
       hintId: 'E',
+      hintDisplay: false,
     }
     this.hintClicked = React.createRef()
     this.inputValue = React.createRef()
@@ -29,8 +30,14 @@ export default class PluginsInputAutocomplete extends React.Component {
         params
       }
     ).then((resp) => {
+      let hintDisplay = false
+      if(resp.data.length > 0){
+        hintDisplay = true
+      }
       this.setState({
-        hints: resp.data
+        hints: resp.data,
+        hintsWidth: this.inputValue.current.offsetWidth,
+        hintDisplay: hintDisplay,
       })
     }).catch((error)=>{
       console.log(error);
@@ -40,16 +47,25 @@ export default class PluginsInputAutocomplete extends React.Component {
   handlerCheckIfEmpty(){
     if(this.state.value == ''){
       this.setState({
-        hints: []
+        hints: [],
+        hintDisplay: false,
       })
     }
   }
 
-  handlerHintClick(hintId){
+  handlerCheckIfEmpty(){
+    if(this.state.value == ''){
+      this.setState({
+        hints: [],
+        hintDisplay: false,
+      })
+    }
+  }
+
+  hideHints(hintId){
     this.setState({
-      hintId: hintId,
       hints: [],
-      value: this.hintClicked.current.innerHTML
+      hintDisplay: false,
     })
   }
 
@@ -67,21 +83,26 @@ export default class PluginsInputAutocomplete extends React.Component {
       </li>
     )
     let inputStyle = {
-      width: this.state.hintWidth,
+      width: this.state.hintsWidth,
     };
+    let display = this.state.hintDisplay ? '' : 'd-none'
     return (
       <React.Fragment>
         <input 
           type="text" 
-          value={this.state.value}           
+          value={this.state.value} 
+          ref={this.inputValue}
           onChange={
             () => this.handlerKeyUp(event)
           }
           onKeyUp={
-            () => this.handlerCheckIfEmpty(event)
+            () => this.handlerCheckIfEmpty()
+          }
+          onBlur={
+            () => this.hideHints()
           }
         />
-        <ul className="hint-container" style={inputStyle} >
+        <ul className={`${display} hint-container`} style={inputStyle} >
           {hints}   
         </ul>
       </React.Fragment>
