@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><%= title %></title>
-  <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
-  <link rel="stylesheet" href="dist/vendors.css" type="text/css">
-  <link rel="stylesheet" href="dist/main.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/styles.css" type="text/css">
+  <link rel="stylesheet" href="/dist/vendors.css" type="text/css">
+  <link rel="stylesheet" href="/dist/main.css" type="text/css">
   <style>
     
   </style>
+   <script>
+    const STATIC_URL = '/';
+    const BASE_URL = 'http://localhost:3000/';
+    const CSRF_KEY = 'key'; 
+    const CSRF = 'alsdjflkadsjflkasdjflk';
+  </script>
 </head>
 <body>
   <div id="root"></div>
-  <script src="dist/vendors.js"></script>
-  <script src="dist/main.js"></script>
+  <script src="/dist/vendors.js"></script>
+  <script src="/dist/main.js"></script>
 </body>
 </html>

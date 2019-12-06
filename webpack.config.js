@@ -16,6 +16,7 @@ var plugins = [
     '_': 'underscore',*/
     'React': 'react',
     'ReactDOM': 'react-dom',
+    'axios': 'axios',
   }),
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output

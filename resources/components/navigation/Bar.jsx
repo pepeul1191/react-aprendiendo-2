@@ -23,8 +23,8 @@ export const NavigationBar = (props) => {
           <Link to="/about" className="nav-link">About</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
           <Nav.Link href="/login">Login</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+          <NavDropdown title="Plugins" id="basic-nav-dropdown">
+            <Link to="/plugins/autocomplete" className="dropdown-item">Autocomplete</Link>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />
