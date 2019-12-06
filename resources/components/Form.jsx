@@ -75,6 +75,4 @@ class Form extends React.Component {
   }
 }
 
-module.exports = {
-  Form, 
-}
+export default Form

@@ -1,10 +1,10 @@
 import { Demo } from '../components/Demo.jsx'
 import Welcome  from '../components/Welcome.jsx'
 import { Greet }  from '../components/Greet.jsx'
-import { Bye }  from '../components/Bye.jsx'
+import Bye  from '../components/Bye.jsx'
 import UserGreeting  from '../components/UserGreeting.jsx'
 import NameList  from '../components/NameList.jsx'
-import { Form }  from '../components/Form.jsx'
+import Form  from '../components/Form.jsx'
 import Stylesheet from '../components/Stylesheet.jsx'
 import ParentComp from '../components/ParentComp.jsx'
 

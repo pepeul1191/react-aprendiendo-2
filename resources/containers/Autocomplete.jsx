@@ -5,7 +5,7 @@ const ContainerAutocomplete = () =>
     <div className="container">
       <h4>Autocomplete contra servicio REST</h4>
       <p><label>Distrito</label></p>
-      <PluginsInputAutocomplete />
+      <PluginsInputAutocomplete url={BASE_URL + 'district/search'}/>
     </div>
   </React.Fragment>
 

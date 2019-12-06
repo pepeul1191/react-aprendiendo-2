@@ -1,10 +1,17 @@
+import './InputAutocomplete.css'
+
 export default class PluginsInputAutocomplete extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       value: '',
       hints: [],
+      url: props.url, 
+      hintWidth: '300px', 
+      hintId: 'E',
     }
+    this.hintClicked = React.createRef()
+    this.inputValue = React.createRef()
   }
 
   handlerKeyUp(event){
@@ -15,16 +22,19 @@ export default class PluginsInputAutocomplete extends React.Component {
       name: event.target.value
     }
     axios.get(
-      BASE_URL + 'district/search', {
+      this.state.url, {
         headers: {
           [CSRF_KEY]: CSRF,
         },
         params
-      })
-      .then(res => {
-        this.state.hints = res.data
       }
-    )
+    ).then((resp) => {
+      this.setState({
+        hints: resp.data
+      })
+    }).catch((error)=>{
+      console.log(error);
+   });
   }
 
   handlerCheckIfEmpty(){
@@ -35,10 +45,30 @@ export default class PluginsInputAutocomplete extends React.Component {
     }
   }
 
+  handlerHintClick(hintId){
+    this.setState({
+      hintId: hintId,
+      hints: [],
+      value: this.hintClicked.current.innerHTML
+    })
+  }
+
   render() {
-    let hints = this.state.hints.map(hint => 
-      <li key={hint.id}>{hint.name}</li>
+    let hints = this.state.hints.map(hint =>
+      <li 
+        className="hint" 
+        key={hint.id} 
+        ref={this.hintClicked}
+        onClick={
+          () => this.handlerHintClick(hint.id)
+        }
+      >
+        {hint.name}
+      </li>
     )
+    let inputStyle = {
+      width: this.state.hintWidth,
+    };
     return (
       <React.Fragment>
         <input 
@@ -51,8 +81,8 @@ export default class PluginsInputAutocomplete extends React.Component {
             () => this.handlerCheckIfEmpty(event)
           }
         />
-        <ul>
-          {hints}     
+        <ul className="hint-container" style={inputStyle} >
+          {hints}   
         </ul>
       </React.Fragment>
     )

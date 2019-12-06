@@ -4,6 +4,4 @@ class Bye extends React.Component {
   }
 }
 
-module.exports = {
-  Bye, 
-}
+export default Bye
