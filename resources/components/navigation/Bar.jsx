@@ -25,6 +25,7 @@ export const NavigationBar = (props) => {
           <Nav.Link href="/login">Login</Nav.Link>
           <NavDropdown title="Plugins" id="basic-nav-dropdown">
             <Link to="/plugins/autocomplete" className="dropdown-item">Autocomplete</Link>
+            <Link to="/plugins/upload" className="dropdown-item">Upload de Archivos</Link>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />

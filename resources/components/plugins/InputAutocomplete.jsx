@@ -1,6 +1,6 @@
 import './InputAutocomplete.css'
 
-export default class PluginInputAutocomplete extends React.Component {
+export default class InputAutocomplete extends React.Component {
   constructor(props){
     super(props)
     this.state = {
