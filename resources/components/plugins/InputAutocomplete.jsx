@@ -53,19 +53,11 @@ export default class PluginInputAutocomplete extends React.Component {
     }
   }
 
-  handlerCheckIfEmpty(){
-    if(this.state.value == ''){
-      this.setState({
-        hints: [],
-        hintDisplay: false,
-      })
-    }
-  }
-
-  hideHints(hintId){
+  hideHints(){
     this.setState({
       hints: [],
       hintDisplay: false,
+      value: this.hintClicked.current.innerHTML,
     })
   }
 
