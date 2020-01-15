@@ -10,7 +10,19 @@ export default class InputUpload extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Upload</h1>
+        hola
+        <button> 
+          <i className="fa fa-search btn-icon" aria-hidden="true"></i>
+          Buscar Archivo
+        </button>
+        <button> 
+          <i className="fa fa-upload btn-icon" aria-hidden="true"></i>
+          Subir
+        </button>
+        <input 
+          type="file"
+          className=""
+        />
       </React.Fragment>
     )
   }
