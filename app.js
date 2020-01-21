@@ -3,7 +3,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const fileUpload = require('express-fileupload');
-const session = require('express-session')
+const session = require('express-session');
+const fs = require('fs');
 // custom configs and middlewares
 const error404 = require('./api/middlewares/error_404');
 const errorHandler = require('./api/middlewares/error_handler');
@@ -27,6 +28,10 @@ app.use(session({
 }));
 // preResponse
 app.use(preResponse);
+// create upload folder if not exist
+if (!fs.existsSync('public/uploads')){
+  fs.mkdirSync('public/uploads');
+}
 // register routes
 bootstrap(app);
 // catch 404 and forward to error handler

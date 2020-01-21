@@ -17,12 +17,17 @@ export default class InputUpload extends React.Component {
     let formData = new FormData()
     let file = this.searchClicked.current
     console.log(file.files[0])
-    formData.append(file.files[0])
+    formData.append('file', file.files[0])
     console.log(formData)
     axios.post(BASE_URL + 'upload/file', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
+    }).then(function () {
+      console.log('SUCCESS!!');
+    })
+    .catch(function () {
+      console.log('FAILURE!!');
     })
   }
 
