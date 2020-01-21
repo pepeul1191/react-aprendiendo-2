@@ -10,6 +10,8 @@ export default class InputUpload extends React.Component {
       url: props.url, 
       helpText: props.helpText,
       helpTextClass: props.helpTextClass,
+      maxSize: props.maxSize, // bytes
+      extensions: props.extensions,
     }
     this.searchClicked = React.createRef()
   }
@@ -18,41 +20,83 @@ export default class InputUpload extends React.Component {
     this.searchClicked.current.click()
   }
 
+  eraseHelperText() {
+    let _this = this
+    setTimeout(function(){ 
+      _this.setState({
+        helpText: '', 
+      })
+    }, 3000)
+  }
+
   handlerUploadClick() {
     let formData = new FormData()
-    let file = this.searchClicked.current
-    formData.append(this.state.fileKey, file.files[0])
-    let _this = this
-    this.setState({
-      helpText: 'Subiendo ...', 
-      helpTextClass: 'text-info',
-    })
-    axios.post(this.state.url, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(function (resp) {
-      _this.setState({
-        path: resp.data.path, 
-        url: resp.data.url, 
-        helpText: 'Archivo subido con éxito', 
-        helpTextClass: 'text-success',
-      })
-      setTimeout(function(){ 
-        _this.setState({
-          helpText: '', 
+    let file = this.searchClicked.current.files[0]
+    // check if file is selected
+    if (file !== undefined){
+      // check file size
+      if(file.size < this.state.maxSize){
+        // check file extension
+        if(this.state.extensions.includes(file.type)){
+          formData.append(this.state.fileKey, file)
+          let _this = this
+          this.setState({
+            helpText: 'Subiendo ...', 
+            helpTextClass: 'text-info',
+          })
+          axios.post(this.state.url, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }).then(function (resp) {
+            _this.setState({
+              path: resp.data.path, 
+              url: resp.data.url, 
+              helpText: 'Archivo subido con éxito', 
+              helpTextClass: 'text-success',
+            })
+            _this.eraseHelperText()
+          })
+          .catch(function (error) {
+            console.error(error);
+            _this.setState({
+              path: null, 
+              url: null, 
+              helpText: 'Ocurrió un error en subir el archivo', 
+              helpTextClass: 'text-danger',
+            })
+            _this.eraseHelperText()
+          })
+        }else{
+          // ELSE: check file extension
+          this.setState({
+            path: null, 
+            url: null, 
+            helpText: 'Extensión de archivo no válida', 
+            helpTextClass: 'text-danger',
+          })
+          this.eraseHelperText()
+        }
+      }else{
+        // ELSE: check file size
+        this.setState({
+          path: null, 
+          url: null, 
+          helpText: 'Tamaño del archivo supera el máximo permitido', 
+          helpTextClass: 'text-danger',
         })
-      }, 3000)
-    })
-    .catch(function (error) {
-      console.error(error);
-      _this.setState({
+        this.eraseHelperText()
+      }
+    }else{
+      // ELSE: check if file is selected
+      this.setState({
         path: null, 
         url: null, 
-        helpText: 'Ocurrió un error en subir el archivo', 
-        helpTextClass: 'text-danger',
+        helpText: 'Debe de seleccionar un archivo', 
+        helpTextClass: 'text-warning',
       })
-    })
+      this.eraseHelperText()
+    }
   }
 
   render() {

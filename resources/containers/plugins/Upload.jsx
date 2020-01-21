@@ -8,6 +8,8 @@ const ContainerUpload = () =>
       <InputUpload 
         url={BASE_URL + 'upload/file'} 
         fileKey='file' 
+        maxSize={500000}
+        extensions={['image/jpeg', 'image/png', 'image/jpg']}
       />
     </div>
   </React.Fragment>
