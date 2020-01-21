@@ -1,3 +1,11 @@
 .formulario{
   color: blue;
 }
+
+.btn > i {
+  margin-right: 5px;
+}
+
+.btn, .form-control {
+  border-radius: 0px !important;
+}

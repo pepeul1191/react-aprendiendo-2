@@ -8,6 +8,8 @@ export default class InputUpload extends React.Component {
       fileKey: props.fileKey, 
       path: props.path, 
       url: props.url, 
+      helpText: props.helpText,
+      helpTextClass: props.helpTextClass,
     }
     this.searchClicked = React.createRef()
   }
@@ -21,6 +23,10 @@ export default class InputUpload extends React.Component {
     let file = this.searchClicked.current
     formData.append(this.state.fileKey, file.files[0])
     let _this = this
+    this.setState({
+      helpText: 'Subiendo ...', 
+      helpTextClass: 'text-info',
+    })
     axios.post(this.state.url, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -29,44 +35,65 @@ export default class InputUpload extends React.Component {
       _this.setState({
         path: resp.data.path, 
         url: resp.data.url, 
+        helpText: 'Archivo subido con éxito', 
+        helpTextClass: 'text-success',
       })
+      setTimeout(function(){ 
+        _this.setState({
+          helpText: '', 
+        })
+      }, 3000)
     })
     .catch(function (error) {
       console.error(error);
+      _this.setState({
+        path: null, 
+        url: null, 
+        helpText: 'Ocurrió un error en subir el archivo', 
+        helpTextClass: 'text-danger',
+      })
     })
   }
 
   render() {
     return (
       <React.Fragment>
-        hola
-        <button
-          onClick={
-            () => this.handlerSearchClick()
-          }
-        > 
-          <i 
-            className="fa fa-search btn-icon" 
-            aria-hidden="true"
-          ></i>
-          Buscar Archivo
-        </button>
-        <button
-          onClick={
-            () => this.handlerUploadClick()
-          }
-        >  
-          <i 
-            className="fa fa-upload btn-icon" 
-            aria-hidden="true"
-          ></i>
-          Subir
-        </button>
-        <input 
-          type="file"
-          className=""
-          ref={this.searchClicked}
-        />
+        <div className="form-group form-upload">
+          <label>Imagen de Perfil</label>
+          <br></br>
+          <button
+            onClick={
+              () => this.handlerSearchClick()
+            }
+            className="btn btn-secondary"
+          > 
+            <i 
+              className="fa fa-search btn-icon" 
+              aria-hidden="true"
+            ></i>
+            Buscar Archivo
+          </button>
+          <button
+            onClick={
+              () => this.handlerUploadClick()
+            }
+            className="btn btn-primary"
+          >  
+            <i 
+              className="fa fa-upload btn-icon" 
+              aria-hidden="true"
+            ></i>
+            Subir
+          </button>
+          <input 
+            type="file"
+            className="d-none"
+            ref={this.searchClicked}
+          />
+          <small className={`form-text ${this.state.helpTextClass}`}>
+            {this.state.helpText}
+          </small>
+        </div>
       </React.Fragment>
     )
   }
