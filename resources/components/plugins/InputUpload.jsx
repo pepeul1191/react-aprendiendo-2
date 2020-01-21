@@ -5,6 +5,7 @@ export default class InputUpload extends React.Component {
     super(props)
     this.state = {
       url: props.url, 
+      fileKey: props.fileKey, 
     }
     this.searchClicked = React.createRef()
   }
@@ -16,10 +17,8 @@ export default class InputUpload extends React.Component {
   handlerUploadClick() {
     let formData = new FormData()
     let file = this.searchClicked.current
-    console.log(file.files[0])
-    formData.append('file', file.files[0])
-    console.log(formData)
-    axios.post(BASE_URL + 'upload/file', formData, {
+    formData.append(this.state.fileKey, file.files[0])
+    axios.post(this.state.url, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
