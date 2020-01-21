@@ -6,7 +6,6 @@ var router = express.Router();
 
 router.post('/file', bodyParser.text({ type: 'json' }), function (req, res) {
   var file = req.files.file;
-  console.log(file)
   var tempFileNameArray = file.name.split('.');
   var randomVal = helpers.makeId();
   file.mv('public/uploads/' + randomVal + '.' + tempFileNameArray[tempFileNameArray.length - 1], function(err) {
