@@ -80,7 +80,7 @@ export default class InputUpload extends React.Component {
             className="btn btn-primary"
           >  
             <i 
-              className="fa fa-upload btn-icon" 
+              className="fa fa-picture-o btn-icon" 
               aria-hidden="true"
             ></i>
             Subir
@@ -90,6 +90,19 @@ export default class InputUpload extends React.Component {
             className="d-none"
             ref={this.searchClicked}
           />
+          {(this.state.path != null && this.state.url != null) &&
+            <a 
+              target="_blank" 
+              href={`${this.state.url}${this.state.path}`}
+              className="btn btn-success"
+            >
+              <i 
+                className="fa fa-upload btn-icon" 
+                aria-hidden="true"
+              ></i>
+              Ver Archivo
+            </a>
+          }
           <small className={`form-text ${this.state.helpTextClass}`}>
             {this.state.helpText}
           </small>
