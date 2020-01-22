@@ -1,4 +1,4 @@
-import InputAutocomplete from '../../components/plugins/InputAutocomplete.jsx'
+import InputAutocomplete from '../../components/forms/InputAutocomplete.jsx'
 
 const ContainerAutocomplete = () => 
   <React.Fragment>

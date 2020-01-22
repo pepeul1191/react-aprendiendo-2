@@ -1,4 +1,4 @@
-import InputUpload from '../../components/plugins/InputUpload.jsx'
+import InputUpload from '../../components/forms/InputUpload.jsx'
 
 const ContainerUpload = () => 
   <React.Fragment>
