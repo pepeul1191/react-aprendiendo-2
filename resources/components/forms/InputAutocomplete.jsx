@@ -14,6 +14,7 @@ export default class InputAutocomplete extends React.Component {
       hintId: 'E',
       hintDisplay: false,
       helpText: props.helpText,
+      clicked: false,
     }
     this.hintClicked = React.createRef()
     this.inputValue = React.createRef()
@@ -61,7 +62,7 @@ export default class InputAutocomplete extends React.Component {
       }
     }).catch((error)=>{
       console.log(error);
-      _this.setState({
+      this.setState({
         helpText: 'Ocurrió un error en buscar coincidencias', 
         helpTextClass: 'text-danger',
       })
@@ -78,14 +79,25 @@ export default class InputAutocomplete extends React.Component {
     }
   }
 
-  hideHints(){
-    if(this.hintClicked.current.innerHTML.length != 0){
-      this.setState({
-        hints: [],
-        hintDisplay: false,
-        value: this.hintClicked.current.innerHTML,
-      })
+  hideHints(clicked){
+    if(clicked){
+      if(this.hintClicked.current.innerHTML.length != 0){
+        this.setState({
+          hints: [],
+          hintDisplay: false,
+          clicked: true,
+        })
+      }
     }
+  }
+
+  handlerHintClick(id, name){
+    console.log('click')
+    this.setState({
+      value: name,
+      hintId: id,
+    })
+    this.hideHints(true)
   }
 
   render() {
@@ -95,7 +107,7 @@ export default class InputAutocomplete extends React.Component {
         key={hint.id} 
         ref={this.hintClicked}
         onClick={
-          () => this.handlerHintClick(hint.id)
+          () => this.handlerHintClick(hint.id, hint.name)
         }
       >
         {hint.name}
@@ -122,7 +134,7 @@ export default class InputAutocomplete extends React.Component {
               () => this.handlerCheckIfEmpty()
             }
             onBlur={
-              () => this.hideHints()
+              () => this.hideHints(false)
             }
           />
           <ul className={`${display} hint-container`} style={inputStyle} >
