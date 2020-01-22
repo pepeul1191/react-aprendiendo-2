@@ -4,7 +4,7 @@ export default class InputUpload extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      url: props.url, 
+      urlREST: props.urlREST, 
       fileKey: props.fileKey, 
       path: props.path, 
       url: props.url, 
@@ -44,7 +44,7 @@ export default class InputUpload extends React.Component {
             helpText: 'Subiendo ...', 
             helpTextClass: 'text-info',
           })
-          axios.post(this.state.url, formData, {
+          axios.post(this.state.urlREST, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
