@@ -1,18 +1,31 @@
 import './InputAutocomplete.css'
+import random from '../../utils/random.jsx'
 
 export default class InputAutocomplete extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      id: `id_${random()}`,
       value: '',
       hints: [],
       url: props.url, 
+      formLabel: props.formLabel,
       hintsWidth: '600px', 
       hintId: 'E',
       hintDisplay: false,
+      helpText: props.helpText,
     }
     this.hintClicked = React.createRef()
     this.inputValue = React.createRef()
+  }
+
+  eraseHelperText() {
+    let _this = this
+    setTimeout(function(){ 
+      _this.setState({
+        helpText: '', 
+      })
+    }, 3000)
   }
 
   handlerKeyUp(event){
@@ -39,8 +52,20 @@ export default class InputAutocomplete extends React.Component {
         hintsWidth: this.inputValue.current.offsetWidth,
         hintDisplay: hintDisplay,
       })
+      if(resp.data.length == 0 && this.state.value.length != 0){
+        this.setState({
+          helpText: 'No hay coincidencias', 
+          helpTextClass: 'text-warning',
+        })
+        this.eraseHelperText()
+      }
     }).catch((error)=>{
       console.log(error);
+      _this.setState({
+        helpText: 'Ocurrió un error en buscar coincidencias', 
+        helpTextClass: 'text-danger',
+      })
+      this.eraseHelperText()
    });
   }
 
@@ -54,11 +79,13 @@ export default class InputAutocomplete extends React.Component {
   }
 
   hideHints(){
-    this.setState({
-      hints: [],
-      hintDisplay: false,
-      value: this.hintClicked.current.innerHTML,
-    })
+    if(this.hintClicked.current.innerHTML.length != 0){
+      this.setState({
+        hints: [],
+        hintDisplay: false,
+        value: this.hintClicked.current.innerHTML,
+      })
+    }
   }
 
   render() {
@@ -80,23 +107,31 @@ export default class InputAutocomplete extends React.Component {
     let display = this.state.hintDisplay ? '' : 'd-none'
     return (
       <React.Fragment>
-        <input 
-          type="text" 
-          value={this.state.value} 
-          ref={this.inputValue}
-          onChange={
-            () => this.handlerKeyUp(event)
-          }
-          onKeyUp={
-            () => this.handlerCheckIfEmpty()
-          }
-          onBlur={
-            () => this.hideHints()
-          }
-        />
-        <ul className={`${display} hint-container`} style={inputStyle} >
-          {hints}   
-        </ul>
+        <div className="form-group">
+          <label htmlFor={this.state.id}>{this.state.formLabel}</label>
+          <input 
+            type="text" 
+            id={this.state.id}
+            value={this.state.value} 
+            ref={this.inputValue}
+            className="form-control"
+            onChange={
+              () => this.handlerKeyUp(event)
+            }
+            onKeyUp={
+              () => this.handlerCheckIfEmpty()
+            }
+            onBlur={
+              () => this.hideHints()
+            }
+          />
+          <ul className={`${display} hint-container`} style={inputStyle} >
+            {hints}   
+          </ul>
+          <small className={`form-text ${this.state.helpTextClass}`}>
+            {this.state.helpText}
+          </small>
+        </div>
       </React.Fragment>
     )
   }

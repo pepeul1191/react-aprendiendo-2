@@ -1,9 +1,11 @@
 import './InputUpload.css'
+import random from '../../utils/random.jsx'
 
 export default class InputUpload extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      id: `id_${random()}`,
       urlREST: props.urlREST, 
       fileKey: props.fileKey, 
       path: props.path, 
@@ -103,9 +105,10 @@ export default class InputUpload extends React.Component {
     return (
       <React.Fragment>
         <div className="form-group form-upload">
-          <label>Imagen de Perfil</label>
+          <label htmlFor={this.state.id}>Imagen de Perfil</label>
           <br></br>
           <button
+            id={this.state.id}
             onClick={
               () => this.handlerSearchClick()
             }
