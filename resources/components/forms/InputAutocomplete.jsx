@@ -16,6 +16,7 @@ export default class InputAutocomplete extends React.Component {
       helpText: props.helpText,
       clicked: false,
       hintHoverd: null,
+      hintRefActive: null,
     }
     this.hintClicked = React.createRef()
     this.hintRefActive = React.createRef()
@@ -107,18 +108,18 @@ export default class InputAutocomplete extends React.Component {
     if(this.state.hints.length > 0){
       if(this.state.hintHoverd == null){
         if(event.key === 'ArrowDown'){
+          console.log(this.state.hintRefActive)
           if(this.state.hintRefActive != null){
             // other hints
             this.setState({
               hintRefActive: this.state.hintRefActive.nextSibling
             })
             this.state.hintRefActive.classList.add('hint-active')
-            this.state.hintRefActive.focus()
+            this.state.hintRefActive.scrollIntoView()
             if(this.state.hintRefActive.previousSibling != null){
               this.state.hintRefActive.previousSibling.classList.remove('hint-active')
             }
           }else{
-            console.log('first')
             // first hint
             this.inputValue.current.nextSibling.firstChild.classList.add('hint-active')
             this.setState({
@@ -133,20 +134,20 @@ export default class InputAutocomplete extends React.Component {
               hintRefActive: this.state.hintRefActive.previousSibling
             })
             this.state.hintRefActive.classList.add('hint-active')
+            this.state.hintRefActive.scrollIntoView()
             if(this.state.hintRefActive.nextSibling != null){
               this.state.hintRefActive.nextSibling.classList.remove('hint-active')
             }
           }else{
-            console.log('last')
             // last hint
-            this.inputValue.current.previousSibling.lastChild.classList.add('hint-active')
+            this.inputValue.current.nextSibling.lastChild.classList.add('hint-active')
             this.setState({
               hintRefActive: this.inputValue.current.nextSibling.lastChild
             })
           }
         }
         if(event.key === 'Enter'){
-  
+          console.log(this.state.hintRefActive)
         }
       }
     }
@@ -160,7 +161,9 @@ export default class InputAutocomplete extends React.Component {
   }
 
   toggleHover(event) {
-    this.setState({hintHoverd: !this.state.hintHoverd})
+    this.setState({
+      hintHoverd: !this.state.hintHoverd,
+    })
   }
 
   render() {

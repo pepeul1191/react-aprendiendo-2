@@ -14,6 +14,7 @@ var plugins = [
     /*'$': 'jquery',
     'Backbone': 'backbone',
     '_': 'underscore',*/
+    '$': 'jquery',
     'React': 'react',
     'ReactDOM': 'react-dom',
     'axios': 'axios',
