@@ -15,8 +15,10 @@ export default class InputAutocomplete extends React.Component {
       hintDisplay: false,
       helpText: props.helpText,
       clicked: false,
+      hintHoverd: null,
     }
     this.hintClicked = React.createRef()
+    this.hintRefActive = React.createRef()
     this.inputValue = React.createRef()
   }
 
@@ -100,6 +102,66 @@ export default class InputAutocomplete extends React.Component {
     this.hideHints(true)
   }
 
+  handleKeyPress(event){
+    // ArrowDown, ArrowUp
+    if(this.state.hints.length > 0){
+      if(this.state.hintHoverd == null){
+        if(event.key === 'ArrowDown'){
+          if(this.state.hintRefActive != null){
+            // other hints
+            this.setState({
+              hintRefActive: this.state.hintRefActive.nextSibling
+            })
+            this.state.hintRefActive.classList.add('hint-active')
+            if(this.state.hintRefActive.previousSibling != null){
+              this.state.hintRefActive.previousSibling.classList.remove('hint-active')
+            }
+          }else{
+            console.log('first')
+            // first hint
+            this.inputValue.current.nextSibling.firstChild.classList.add('hint-active')
+            this.setState({
+              hintRefActive: this.inputValue.current.nextSibling.firstChild
+            })
+          }
+        }
+        if(event.key === 'ArrowUp'){
+          if(this.state.hintRefActive != null){
+            // other hints
+            this.setState({
+              hintRefActive: this.state.hintRefActive.previousSibling
+            })
+            this.state.hintRefActive.classList.add('hint-active')
+            if(this.state.hintRefActive.nextSibling != null){
+              this.state.hintRefActive.nextSibling.classList.remove('hint-active')
+            }
+          }else{
+            console.log('last')
+            // last hint
+            this.inputValue.current.previousSibling.lastChild.classList.add('hint-active')
+            this.setState({
+              hintRefActive: this.inputValue.current.nextSibling.lastChild
+            })
+          }
+        }
+        if(event.key === 'Enter'){
+  
+        }
+      }
+    }
+    if(event.key === 'Escape'){
+      this.setState({
+        hints: [],
+        hintDisplay: false,
+        clicked: true,
+      })
+    }
+  }
+
+  toggleHover(event) {
+    this.setState({hintHoverd: !this.state.hintHoverd})
+  }
+
   render() {
     let hints = this.state.hints.map(hint =>
       <li 
@@ -132,6 +194,9 @@ export default class InputAutocomplete extends React.Component {
             }
             onKeyUp={
               () => this.handlerCheckIfEmpty()
+            }
+            onKeyDown={
+              () => this.handleKeyPress(event)
             }
             onBlur={
               () => this.hideHints(false)

@@ -5,7 +5,7 @@
   background: white;
   width: 89.5%;
   list-style-type: none;
-  padding-left: 12px;
+  padding-left: 0px;
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -13,6 +13,14 @@
   width: 100%;
   overflow: auto;
   max-height: 150px;
+}
+
+.hint{
+  padding-left: 15px;
+}
+
+.hint:hover, .hint-active{
+  background: red/*#f1f1f1*/;
 }
 
 .hint-container > li > label { 
