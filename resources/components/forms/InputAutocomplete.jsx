@@ -147,7 +147,13 @@ export default class InputAutocomplete extends React.Component {
           }
         }
         if(event.key === 'Enter'){
-          console.log(this.state.hintRefActive)
+          this.setState({
+            value: this.state.hintRefActive.innerHTML,
+            hints: [],
+            hintId: id,
+            hintDisplay: false,
+            clicked: true,
+          })
         }
       }
     }
