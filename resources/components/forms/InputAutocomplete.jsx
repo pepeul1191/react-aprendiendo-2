@@ -113,6 +113,7 @@ export default class InputAutocomplete extends React.Component {
               hintRefActive: this.state.hintRefActive.nextSibling
             })
             this.state.hintRefActive.classList.add('hint-active')
+            this.state.hintRefActive.focus()
             if(this.state.hintRefActive.previousSibling != null){
               this.state.hintRefActive.previousSibling.classList.remove('hint-active')
             }
