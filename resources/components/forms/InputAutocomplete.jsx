@@ -1,5 +1,7 @@
 import './InputAutocomplete.css'
+import './InputHint.jsx'
 import random from '../../utils/random.jsx'
+import InputHint from './InputHint.jsx'
 
 export default class InputAutocomplete extends React.Component {
   constructor(props){
@@ -17,6 +19,7 @@ export default class InputAutocomplete extends React.Component {
       clicked: false,
       hintHoverd: null,
       hintRefActive: null,
+      hintKey: props.hintKey,
     }
     this.hintClicked = React.createRef()
     this.hintRefActive = React.createRef()
@@ -174,6 +177,7 @@ export default class InputAutocomplete extends React.Component {
 
   render() {
     let hints = this.state.hints.map(hint =>
+      /*
       <li 
         className="hint" 
         key={hint.id} 
@@ -182,8 +186,16 @@ export default class InputAutocomplete extends React.Component {
           () => this.handlerHintClick(hint.id, hint.name)
         }
       >
+      let hintKey = this
+      
         {hint.name}
       </li>
+      */
+      <InputHint 
+        key={hint.id}
+        id={hint.id}
+        name={hint.name}
+      />
     )
     let inputStyle = {
       width: this.state.hintsWidth,
@@ -213,7 +225,7 @@ export default class InputAutocomplete extends React.Component {
             }
           />
           <ul className={`${display} hint-container`} style={inputStyle} >
-            {hints}   
+            {hints}
           </ul>
           <small className={`form-text ${this.state.helpTextClass}`}>
             {this.state.helpText}

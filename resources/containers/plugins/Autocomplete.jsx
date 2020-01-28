@@ -9,6 +9,7 @@ const ContainerAutocomplete = () =>
           <InputAutocomplete 
             url={BASE_URL + 'district/search'} 
             formLabel='Distrito'
+            hintKey='id'
           />
         </div>
       </div>
