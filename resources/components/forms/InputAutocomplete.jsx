@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
 import './InputAutocomplete.css'
 import './InputHint.jsx'
 import random from '../../utils/random.jsx'
 import InputHint from './InputHint.jsx'
 
-export default class InputAutocomplete extends React.Component {
+class InputAutocomplete extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -235,3 +236,35 @@ export default class InputAutocomplete extends React.Component {
     )
   }
 }
+
+/*
+this.state = {
+  id: `id_${random()}`,
+  value: '',
+  hints: [],
+  url: props.url, 
+  formLabel: props.formLabel,
+  hintsWidth: '600px', 
+  hintId: 'E',
+  hintDisplay: false,
+  helpText: props.helpText,
+  clicked: false,
+  hintHoverd: null,
+  hintRefActive: null,
+  hintKey: props.hintKey,
+}
+this.hintClicked = React.createRef()
+this.hintRefActive = React.createRef()
+this.inputValue = React.createRef()
+
+export default InputAutocomplete.propTypes = {
+
+}
+*/
+
+// propTypes
+InputAutocomplete.propTypes = {
+  name: PropTypes.string
+};
+
+export default InputAutocomplete

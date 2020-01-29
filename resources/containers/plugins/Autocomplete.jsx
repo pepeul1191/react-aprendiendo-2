@@ -1,6 +1,6 @@
 import InputAutocomplete from '../../components/forms/InputAutocomplete.jsx'
 
-const ContainerAutocomplete = () => 
+const ContainerAutocomplete = () =>   
   <React.Fragment>
     <div className="container">
       <h4>Autocomplete contra servicio REST</h4>

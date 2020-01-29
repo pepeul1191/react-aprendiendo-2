@@ -62,3 +62,4 @@ Fuentes:
 + https://reacttraining.com/react-router/web/guides/quick-start
 + https://www.youtube.com/watch?v=QUz3k2O3ZJU
 + https://www.valentinog.com/blog/await-react/
++ https://es.reactjs.org/docs/typechecking-with-proptypes.html

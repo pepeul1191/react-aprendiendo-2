@@ -18,6 +18,7 @@ var plugins = [
     'React': 'react',
     'ReactDOM': 'react-dom',
     'axios': 'axios',
+    'PropTypes': 'prop-types',
   }),
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
